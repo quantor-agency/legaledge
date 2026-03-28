@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | LegalEdge Consultants</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=EB+Garamond:wght@500;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: rgba(255,255,255,0.02);
+            --card-border: rgba(180,145,60,0.2);
+            --gold: #b4913c;
+            --platinum: #e2e8f0;
+            --muted: rgba(226,232,240,0.5);
+            --glow-gold: 0 0 25px rgba(180,145,60,0.3);
+            --green: #22c55e;
+            --amber: #f59e0b;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--platinum);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'EB Garamond', serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 56px);
+        }
+
+        h2 {
+            font-size: clamp(28px, 4vw, 44px);
+        }
+
+        h3 {
+            font-size: clamp(20px, 2.5vw, 26px);
+            font-weight: 500;
+        }
+
+        .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+            letter-spacing: 0.02em;
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-primary:hover {
+            background: #c9a44d;
+            box-shadow: 0 0 40px rgba(180,145,60,0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(180,145,60,0.1);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 13px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5,10,20,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 40px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            color: var(--gold);
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 1px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-title {
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2.2vw, 19px);
+            font-weight: 300;
+            color: var(--muted);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease 0.4s forwards;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            margin-bottom: 12px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Filter Tabs */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .filter-tab {
+            padding: 10px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--gold);
+            color: var(--platinum);
+        }
+
+        .filter-tab.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* Cases Grid */
+        .cases-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(180,145,60,0.02) 50%, var(--bg-dark) 100%);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .case-card {
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border-left: 3px solid var(--gold);
+        }
+
+        .case-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(180,145,60,0.4);
+            box-shadow: 0 0 40px rgba(180,145,60,0.2);
+        }
+
+        .case-code {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .case-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .case-area {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(180,145,60,0.1);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+        }
+
+        .case-summary {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .case-outcome {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .case-outcome.won {
+            background: rgba(34,197,94,0.15);
+            border: 1px solid rgba(34,197,94,0.3);
+            color: var(--green);
+        }
+
+        .case-outcome.settled {
+            background: rgba(245,158,11,0.15);
+            border: 1px solid rgba(245,158,11,0.3);
+            color: var(--amber);
+        }
+
+        .case-outcome.dismissed {
+            background: rgba(226,232,240,0.1);
+            border: 1px solid rgba(226,232,240,0.2);
+            color: var(--platinum);
+        }
+
+        .case-card.hidden {
+            display: none;
+        }
+
+        /* Stats Strip */
+        .stats-strip {
+            background: linear-gradient(180deg, rgba(180,145,60,0.05) 0%, var(--bg-dark) 100%);
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Mono', monospace;
+            font-size: clamp(36px, 5vw, 52px);
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(180,145,60,0.15) 0%, rgba(5,10,20,1) 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(180,145,60,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            margin-bottom: 32px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            padding: 80px 40px 40px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .footer-tagline {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--card-border);
+            margin-bottom: 32px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .footer-credit {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        .footer-credit a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .footer-credit a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            background: rgba(5,10,20,0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-bottom: 1px solid var(--card-border);
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-menu a {
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+
+            .filter-container {
+                gap: 8px;
+            }
+
+            .filter-tab {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 22px;
+            }
+
+            .case-card {
+                padding: 24px 20px;
+            }
+
+            .case-title {
+                font-size: 18px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .cta-banner {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <a href="legaledge-index.html" class="logo-container">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+            </svg>
+            <span class="logo">LEGALEDGE</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="legaledge-index.html">Home</a></li>
+            <li><a href="legaledge-practice.html">Practice Areas</a></li>
+            <li><a href="legaledge-attorneys.html">Attorneys</a></li>
+            <li><a href="legaledge-cases.html" class="active">Case Studies</a></li>
+            <li><a href="legaledge-contact.html">Contact</a></li>
+            <li><a href="legaledge-contact.html" class="btn btn-ghost btn-small">Schedule Consultation</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="legaledge-index.html">Home</a></li>
+            <li><a href="legaledge-practice.html">Practice Areas</a></li>
+            <li><a href="legaledge-attorneys.html">Attorneys</a></li>
+            <li><a href="legaledge-cases.html">Case Studies</a></li>
+            <li><a href="legaledge-contact.html">Contact</a></li>
+            <li><a href="legaledge-contact.html" class="btn btn-ghost">Schedule Consultation</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">Results Speak Louder Than Promises</h1>
+            <p class="hero-subtitle">A selection of cases that demonstrate what we stand for.</p>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="section cases-section" id="cases">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="label" style="color: var(--gold);">Case Archives</p>
+                <h2 class="section-title">Notable Cases</h2>
+            </div>
+
+            <div class="filter-container reveal" data-delay="100">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="corporate">Corporate</button>
+                <button class="filter-tab" data-filter="realestate">Real Estate</button>
+                <button class="filter-tab" data-filter="criminal">Criminal</button>
+                <button class="filter-tab" data-filter="family">Family</button>
+                <button class="filter-tab" data-filter="ip">IP</button>
+            </div>
+
+            <div class="cases-grid" id="casesGrid">
+                <!-- Corporate Case -->
+                <div class="case-card reveal" data-filter="corporate" data-delay="0">
+                    <p class="case-code">CASE #2023-CO-087</p>
+                    <h3 class="case-title">TechCorp Acquisition Dispute</h3>
+                    <span class="case-area">Corporate Law</span>
+                    <p class="case-summary">Represented a mid-sized tech company in a contested acquisition. Negotiated favorable terms that preserved client interests while completing the $85M transaction.</p>
+                    <span class="case-outcome won">Won</span>
+                </div>
+
+                <!-- Real Estate Case -->
+                <div class="case-card reveal" data-filter="realestate" data-delay="100">
+                    <p class="case-code">CASE #2023-RE-034</p>
+                    <h3 class="case-title">Commercial Development Zoning</h3>
+                    <span class="case-area">Real Estate</span>
+                    <p class="case-summary">Secured zoning approvals for a 45-acre mixed-use development project after 14 months of negotiations with municipal authorities and community stakeholders.</p>
+                    <span class="case-outcome won">Won</span>
+                </div>
+
+                <!-- Criminal Case -->
+                <div class="case-card reveal" data-filter="criminal" data-delay="200">
+                    <p class="case-code">CASE #2022-CR-041</p>
+                    <h3 class="case-title">Federal Securities Fraud Defense</h3>
+                    <span class="case-area">Criminal Defense</span>
+                    <p class="case-summary">Successfully defended a corporate executive against federal securities fraud charges. All charges dismissed after demonstrating insufficient evidence and procedural violations.</p>
+                    <span class="case-outcome dismissed">Dismissed</span>
+                </div>
+
+                <!-- Family Case -->
+                <div class="case-card reveal" data-filter="family" data-delay="300">
+                    <p class="case-code">CASE #2023-FA-112</p>
+                    <h3 class="case-title">High-Net-Worth Divorce Settlement</h3>
+                    <span class="case-area">Family Law</span>
+                    <p class="case-summary">Negotiated comprehensive settlement in complex divorce involving multiple business interests and international assets, securing fair division while protecting family wealth.</p>
+                    <span class="case-outcome settled">Settled</span>
+                </div>
+
+                <!-- IP Case -->
+                <div class="case-card reveal" data-filter="ip" data-delay="400">
+                    <p class="case-code">CASE #2023-IP-029</p>
+                    <h3 class="case-title">Patent Infringement Litigation</h3>
+                    <span class="case-area">Intellectual Property</span>
+                    <p class="case-summary">Defended a pharmaceutical client against patent infringement claims. Achieved favorable settlement with licensing agreement that protected client's market position.</p>
+                    <span class="case-outcome settled">Settled</span>
+                </div>
+
+                <!-- Civil Litigation Case -->
+                <div class="case-card reveal" data-filter="corporate" data-delay="500">
+                    <p class="case-code">CASE #2024-CO-015</p>
+                    <h3 class="case-title">Breach of Contract Arbitration</h3>
+                    <span class="case-area">Corporate Law</span>
+                    <p class="case-summary">Represented manufacturing company in international arbitration. Secured $12M damages plus legal costs after proving willful breach of supply agreement.</p>
+                    <span class="case-outcome won">Won</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="section stats-strip" id="stats">
+        <div class="container">
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500" data-suffix="+">0+</div>
+                    <div class="stat-label">Cases Handled</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="94" data-suffix="%">0%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="25" data-suffix="+">0+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+                    <div class="stat-label">Industries Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="cta-content reveal">
+            <h2 class="cta-title">Have a case that needs expert attention?</h2>
+            <a href="legaledge-contact.html" class="btn btn-primary">Get a Case Evaluation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-logo-container">
+                        <svg class="logo-icon" style="width:24px;height:24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                        </svg>
+                        <span class="footer-logo">LEGALEDGE</span>
+                    </div>
+                    <p class="footer-tagline">Strategic legal counsel for discerning clients worldwide.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="legaledge-index.html">Home</a></li>
+                    <li><a href="legaledge-practice.html">Practice Areas</a></li>
+                    <li><a href="legaledge-attorneys.html">Attorneys</a></li>
+                    <li><a href="legaledge-cases.html">Case Studies</a></li>
+                    <li><a href="legaledge-contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p class="footer-credit">Demo site built by <a href="https://quantor-agency.github.io/" target="_blank" rel="noopener">QUANTOR</a> — quantor-agency.github.io</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Initialize variables first
+        let scene, camera, renderer, shapes = [];
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+        let animationId = null;
+        
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Three.js Hero Background
+        function initThreeJS() {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+
+            scene = new THREE.Scene();
+            
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 40;
+
+            renderer = new THREE.WebGLRenderer({ 
+                canvas: canvas, 
+                antialias: true, 
+                alpha: true 
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const goldMaterial = new THREE.MeshBasicMaterial({
+                color: 0xb4913c,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.35
+            });
+
+            const platinumMaterial = new THREE.MeshBasicMaterial({
+                color: 0xe2e8f0,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.18
+            });
+
+            for (let i = 0; i < 10; i++) {
+                const geometryType = i % 3;
+                let geometry;
+                
+                if (geometryType === 0) {
+                    geometry = new THREE.OctahedronGeometry(1.5, 0);
+                } else if (geometryType === 1) {
+                    geometry = new THREE.TetrahedronGeometry(1.5, 0);
+                } else {
+                    geometry = new THREE.BoxGeometry(2, 0.3, 2);
+                }
+                
+                const material = i % 2 === 0 ? goldMaterial : platinumMaterial;
+                const mesh = new THREE.Mesh(geometry, material);
+                
+                const scale = 0.6 + Math.random() * 1.2;
+                mesh.scale.set(scale, scale, scale);
+                
+                mesh.position.x = (Math.random() - 0.5) * 50;
+                mesh.position.y = (Math.random() - 0.5) * 35;
+                mesh.position.z = (Math.random() - 0.5) * 20;
+                
+                mesh.userData = {
+                    rotationSpeed: {
+                        x: (Math.random() - 0.5) * 0.002,
+                        y: (Math.random() - 0.5) * 0.002,
+                        z: (Math.random() - 0.5) * 0.001
+                    },
+                    floatSpeed: 0.15 + Math.random() * 0.25,
+                    floatOffset: Math.random() * Math.PI * 2,
+                    originalY: mesh.position.y
+                };
+                
+                shapes.push(mesh);
+                scene.add(mesh);
+            }
+
+            const linesMaterial = new THREE.LineBasicMaterial({
+                color: 0xb4913c,
+                transparent: true,
+                opacity: 0.12
+            });
+
+            for (let i = 0; i < 15; i++) {
+                const points = [];
+                const startX = (Math.random() - 0.5) * 70;
+                const startY = (Math.random() - 0.5) * 40;
+                const startZ = (Math.random() - 0.5) * 25;
+                
+                points.push(new THREE.Vector3(startX, startY, startZ));
+                points.push(new THREE.Vector3(
+                    startX + (Math.random() - 0.5) * 18,
+                    startY + (Math.random() - 0.5) * 18,
+                    startZ + (Math.random() - 0.5) * 8
+                ));
+                
+                const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                const line = new THREE.Line(lineGeometry, linesMaterial);
+                
+                line.userData = {
+                    floatSpeed: 0.12 + Math.random() * 0.18,
+                    floatOffset: Math.random() * Math.PI * 2,
+                    originalY: startY,
+                    isLine: true
+                };
+                
+                shapes.push(line);
+                scene.add(line);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('resize', onWindowResize);
+            
+            if (!prefersReducedMotion) {
+                animate();
+            } else {
+                renderer.render(scene, camera);
+            }
+        }
+
+        function onMouseMove(event) {
+            targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            targetMouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
+        function onWindowResize() {
+            if (!camera || !renderer) return;
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            animationId = requestAnimationFrame(animate);
+            
+            mouseX += (targetMouseX - mouseX) * 0.03;
+            mouseY += (targetMouseY - mouseY) * 0.03;
+
+            const time = Date.now() * 0.001;
+
+            shapes.forEach((shape, index) => {
+                if (shape.userData.rotationSpeed) {
+                    shape.rotation.x += shape.userData.rotationSpeed.x;
+                    shape.rotation.y += shape.userData.rotationSpeed.y;
+                    shape.rotation.z += shape.userData.rotationSpeed.z;
+                }
+                
+                if (shape.userData.floatSpeed !== undefined && shape.userData.originalY !== undefined) {
+                    shape.position.y = shape.userData.originalY + 
+                        Math.sin(time * shape.userData.floatSpeed + shape.userData.floatOffset) * 1.2;
+                }
+                
+                const parallaxFactor = 0.18;
+                shape.position.x += mouseX * parallaxFactor * (index % 2 === 0 ? 1 : -1) * 0.015;
+                shape.position.y += mouseY * parallaxFactor * (index % 2 === 0 ? 1 : -1) * 0.015;
+            });
+
+            camera.position.x += (mouseX * 4 - camera.position.x) * 0.02;
+            camera.position.y += (mouseY * 3 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        }
+
+        // Navigation
+        function initNavigation() {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (!navbar || !hamburger || !mobileMenu) return;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('show');
+                hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('show');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        // Scroll reveal
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, parseInt(delay));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+            reveals.forEach(reveal => observer.observe(reveal));
+        }
+
+        // Filter functionality
+        function initFilter() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const caseCards = document.querySelectorAll('.case-card');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const filter = tab.dataset.filter;
+                    
+                    caseCards.forEach(card => {
+                        const cardFilter = card.dataset.filter;
+                        
+                        if (filter === 'all' || cardFilter === filter) {
+                            card.classList.remove('hidden');
+                            card.classList.remove('visible');
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, 50);
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Count-up animation
+        function initCountUp() {
+            const stats = document.querySelector('.stats-grid');
+            if (!stats) return;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumbers = entry.target.querySelectorAll('.stat-number');
+                        statNumbers.forEach(stat => {
+                            const target = parseInt(stat.dataset.target);
+                            const suffix = stat.dataset.suffix || '';
+                            const duration = 2000;
+                            const startTime = Date.now();
+                            
+                            const updateCount = () => {
+                                const elapsed = Date.now() - startTime;
+                                const progress = Math.min(elapsed / duration, 1);
+                                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                                const current = Math.floor(target * easeProgress);
+                                stat.textContent = current + suffix;
+                                
+                                if (progress < 1) {
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    stat.textContent = target + suffix;
+                                }
+                            };
+                            
+                            if (!prefersReducedMotion) {
+                                updateCount();
+                            } else {
+                                stat.textContent = target + suffix;
+                            }
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(stats);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initThreeJS();
+            initNavigation();
+            initScrollReveal();
+            initFilter();
+            initCountUp();
+        });
+
+        window.addEventListener('beforeunload', () => {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        });
+    </script>
+</body>
+</html>
